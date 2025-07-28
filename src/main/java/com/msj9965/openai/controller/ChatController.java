@@ -7,6 +7,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.msj9965.openai.dto.QuestionRequest;
 import com.msj9965.openai.service.ChatService;
 
 import lombok.RequiredArgsConstructor;
@@ -29,5 +30,12 @@ public class ChatController {
 	public String addSystem(@RequestBody String message) {
 
 		return chatService.chatSystem(message);
+	}
+
+	@PostMapping("/chat/placeholder")
+	public  String placeholder(@RequestBody QuestionRequest questionRequest) {
+		return chatService.chatPlaceholer(
+			questionRequest.getSubject(), questionRequest.getTone(), questionRequest.getMessage()
+		);
 	}
 }

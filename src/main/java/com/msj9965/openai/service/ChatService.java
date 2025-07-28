@@ -26,4 +26,17 @@ public class ChatService {
 			.getOutput()
 			.getText();
 	}
+
+	public String chatPlaceholer(String subject, String tone, String message) {
+		return chatClient.prompt()
+			.user(message)
+			.system(sp -> sp
+				.param("subject", subject)
+				.param("tone", tone)) // 시스템 메시지에 파라미터 추가
+			.call()
+			.chatResponse()
+			.getResult()
+			.getOutput()
+			.getText();
+	}
 }
