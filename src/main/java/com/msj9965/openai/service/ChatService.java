@@ -16,4 +16,14 @@ public class ChatService {
 			.call()// AI 모델 호출
 			.content(); // 요청정보를 받는 부분
 	}
+
+	public String chatSystem(String message) {
+		return chatClient.prompt()
+			.user(message)
+			.call()
+			.chatResponse()
+			.getResult()
+			.getOutput()
+			.getText();
+	}
 }

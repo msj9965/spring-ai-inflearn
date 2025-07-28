@@ -24,4 +24,10 @@ public class ChatController {
 
 		return chatService.chat(message);
 	}
+
+	@PostMapping("/chat/add-system")
+	public String addSystem(@RequestBody String message) {
+
+		return chatService.chatSystem(message);
+	}
 }
